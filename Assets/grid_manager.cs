@@ -8,6 +8,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class grid_manager : MonoBehaviour
@@ -92,6 +93,7 @@ public class grid_manager : MonoBehaviour
     public GameObject draw;
     public GameObject escape_white_button;
     public GameObject escape_green_button;
+    public GameObject menu;
 
 
     void ChangeTeam()
@@ -149,6 +151,7 @@ public class grid_manager : MonoBehaviour
         {
             draw.SetActive(true);
         }
+        BubblesGoUp();
     }
 
     int ResetCurrentAnimalIndex(int current_animal_index, int number_animals)
@@ -260,12 +263,12 @@ public class grid_manager : MonoBehaviour
         //int random_x = random.NextInt(1, 2);
         //int random_y = random.NextInt(1, 3);
 
-        SetAnimal(0, 0, Team.White, Animal.Shark);
-        SetAnimal(0, 1, Team.White, Animal.Fish);
-        SetAnimal(0, 2, Team.White, Animal.Shrimp);
+        SetAnimal(0, 1, Team.White, Animal.Shark);
+        SetAnimal(0, 3, Team.White, Animal.Fish);
+        SetAnimal(0, 5, Team.White, Animal.Shrimp);
         SetAnimal(7, 1, Team.Green, Animal.Shark);
-        SetAnimal(7, 2, Team.Green, Animal.Fish);
-        SetAnimal(7, 3, Team.Green, Animal.Shrimp);
+        SetAnimal(7, 3, Team.Green, Animal.Fish);
+        SetAnimal(7, 5, Team.Green, Animal.Shrimp);
 
 
         
@@ -357,18 +360,21 @@ public class grid_manager : MonoBehaviour
         animal_object.animal = animal;
     }
 
+    public List<GameObject> SpawnedBubbles = new List<GameObject>{};
     void SpawnBubbles(Team team, int x, int y)
     {
         if ( team == Team.Green )
         {
             green_bubble_board[x][y] = GridSquareBubbles.BUBBLES;
             GameObject bubbles = Instantiate(green_bubbles);
+            SpawnedBubbles.Add(bubbles);
             bubbles.transform.position = GridToPosition(x,y);
         }
         else
         {
             white_bubble_board[x][y] = GridSquareBubbles.BUBBLES;
             GameObject bubbles = Instantiate(white_bubbles);
+            SpawnedBubbles.Add(bubbles);
             bubbles.transform.position = GridToPosition(x,y);
             
         }
@@ -789,6 +795,16 @@ public class grid_manager : MonoBehaviour
                 Debug.Log("white wins");
             }
             
+        }
+    }
+
+    
+
+    void BubblesGoUp()
+    {
+        for (int i = 0; i < SpawnedBubbles.Count; i ++)
+        {
+            SpawnedBubbles[i].GetComponent<Rigidbody2D>().AddForce(transform.up*25);
         }
     }
 }
