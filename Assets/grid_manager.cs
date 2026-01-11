@@ -94,6 +94,15 @@ public class grid_manager : MonoBehaviour
     public GameObject escape_white_button;
     public GameObject escape_green_button;
     public GameObject menu;
+    public GameObject field;
+    public Animator white_shrimp_animation;
+    public Animator green_shrimp_animation;
+    public Animator white_shark_animation;
+    public Animator green_shark_animation;
+    public Animator white_fish_animation;
+    public Animator green_fish_animation;
+
+
 
 
     void ChangeTeam()
@@ -135,6 +144,7 @@ public class grid_manager : MonoBehaviour
             }
         }
         EscapeButtons();
+        Animations();
     }
 
     void DefineWinner()
@@ -152,6 +162,35 @@ public class grid_manager : MonoBehaviour
             draw.SetActive(true);
         }
         BubblesGoUp();
+        field.SetActive(false);
+    }
+
+    void AnimationsChill()
+    {
+        if ( white_shark_animation != null)
+        {
+            white_shark_animation.SetBool("go", false);
+        }
+        if ( white_fish_animation != null)
+        {
+            white_fish_animation.SetBool("go", false);  
+        }
+        if ( green_shark_animation != null)
+        {
+            green_shark_animation.SetBool("go", false);
+        }
+        if ( green_fish_animation != null)
+        {
+            green_fish_animation.SetBool("go", false);
+        }
+        if ( green_shrimp_animation != null)
+        {
+            green_shrimp_animation.SetBool("shrimp_go", false);
+        }
+        if ( white_shrimp_animation != null)
+        {
+            white_shrimp_animation.SetBool("shrimp_go", false); 
+        }
     }
 
     int ResetCurrentAnimalIndex(int current_animal_index, int number_animals)
@@ -271,7 +310,19 @@ public class grid_manager : MonoBehaviour
         SetAnimal(7, 5, Team.Green, Animal.Shrimp);
 
 
-        
+        AnimalData current_animal = GetAnimalTurn(current_team);
+
+        if (current_animal.type == GridSquareAnimal.WHITE_SHARK)
+        {
+            white_shark_animation.SetBool("go", true);
+        }
+        else
+        {
+            if (white_shark_animation != null)
+            {
+                white_shark_animation.SetBool("go", false);
+            }
+        }
     }
 
     GridSquareAnimal GetAnimalSquareType( Team team, Animal animal )
@@ -701,6 +752,33 @@ public class grid_manager : MonoBehaviour
                 Debug.Log( current_team.ToString() + " Loses");
             }
         }
+        AnimationsChill();
+        Animations();
+    }
+    void Animations()
+    {
+        AnimalData current_animal = GetAnimalTurn(current_team);
+        switch (current_animal.type)
+        {
+        case GridSquareAnimal.WHITE_SHARK:
+            white_shark_animation.SetBool("go", true);
+            break;
+        case GridSquareAnimal.WHITE_FISH:
+            white_fish_animation.SetBool("go", true);
+            break;
+        case GridSquareAnimal.GREEN_SHARK:
+            green_shark_animation.SetBool("go", true);
+            break;
+        case GridSquareAnimal.GREEN_FISH:
+            green_fish_animation.SetBool("go", true);
+            break;
+        case GridSquareAnimal.GREEN_SHRIMP:
+            green_shrimp_animation.SetBool("shrimp_go", true);
+            break;
+        case GridSquareAnimal.WHITE_SHRIMP:
+            white_shrimp_animation.SetBool("shrimp_go", true);
+            break;
+        }
     }
 
     public void EscapeWhite()
@@ -804,7 +882,7 @@ public class grid_manager : MonoBehaviour
     {
         for (int i = 0; i < SpawnedBubbles.Count; i ++)
         {
-            SpawnedBubbles[i].GetComponent<Rigidbody2D>().AddForce(transform.up*25);
+            SpawnedBubbles[i].GetComponent<Rigidbody2D>().AddForce(transform.up*45);
         }
     }
 }

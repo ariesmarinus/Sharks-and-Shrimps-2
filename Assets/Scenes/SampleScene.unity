@@ -794,7 +794,7 @@ Animator:
   m_GameObject: {fileID: 270409644}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a57809793f7620d4e969ad48e38f9aa1, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8ebe76149350dd64f81709728f1c0496, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1223,6 +1223,13 @@ MonoBehaviour:
   escape_white_button: {fileID: 1169824122}
   escape_green_button: {fileID: 269002952}
   menu: {fileID: 328713302}
+  field: {fileID: 527147823}
+  white_shrimp_animation: {fileID: 1365108540}
+  green_shrimp_animation: {fileID: 1512919903}
+  white_shark_animation: {fileID: 916311889}
+  green_shark_animation: {fileID: 270409647}
+  white_fish_animation: {fileID: 2141092014}
+  green_fish_animation: {fileID: 1171580722}
   SpawnedBubbles: []
 --- !u!1 &542812195
 GameObject:
@@ -1866,7 +1873,7 @@ Animator:
   m_GameObject: {fileID: 916311887}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a57809793f7620d4e969ad48e38f9aa1, type: 2}
+  m_Controller: {fileID: 9100000, guid: af59b6e42bc155a40b85828b42044bf9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2681,6 +2688,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1171580721}
   - component: {fileID: 1171580720}
+  - component: {fileID: 1171580722}
   m_Layer: 0
   m_Name: fish green
   m_TagString: Untagged
@@ -2762,6 +2770,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1186562712}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1171580722
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171580719}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f289f7447f50ff84dbe1a572097fde7c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1171892602
 GameObject:
   m_ObjectHideFlags: 0
@@ -3217,6 +3247,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1365108539}
   - component: {fileID: 1365108538}
+  - component: {fileID: 1365108540}
   m_Layer: 0
   m_Name: shrimp white
   m_TagString: Untagged
@@ -3298,6 +3329,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 721876719}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1365108540
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365108537}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 51bf52d1e5a827c4c98e3dd1e5f1b583, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1509103511
 GameObject:
   m_ObjectHideFlags: 0
@@ -3445,6 +3498,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1512919902}
   - component: {fileID: 1512919901}
+  - component: {fileID: 1512919903}
   m_Layer: 0
   m_Name: shrimp green
   m_TagString: Untagged
@@ -3526,6 +3580,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1186562712}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1512919903
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512919900}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 509401595ddd82f4c953aefa9de5ead9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1555171823
 GameObject:
   m_ObjectHideFlags: 0
@@ -3913,7 +3989,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 24.919998}
+  m_AnchoredPosition: {x: 0, y: 24.920013}
   m_SizeDelta: {x: 0, y: 447.41998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1695474222
@@ -5032,15 +5108,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.03545901, b: 0.49056602, a: 1}
+  m_Color: {r: 0.25265214, g: 0.5698112, b: 0.5667465, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 1782499782532937887, guid: 34eecfacd6e0a0c458d9b8c181268e86, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5091,6 +5167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2141092013}
   - component: {fileID: 2141092012}
+  - component: {fileID: 2141092014}
   m_Layer: 0
   m_Name: fish white
   m_TagString: Untagged
@@ -5172,6 +5249,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 721876719}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2141092014
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141092011}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 51a6592002e2f3b49a6b3c3b020215e4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
