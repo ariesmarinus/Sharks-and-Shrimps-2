@@ -10,8 +10,9 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Unity.Netcode;
 
-public class grid_manager : MonoBehaviour
+public class grid_manager : NetworkBehaviour
 {
     public moving_script cell;
     public enum Animal
@@ -101,10 +102,13 @@ public class grid_manager : MonoBehaviour
     public Animator green_shark_animation;
     public Animator white_fish_animation;
     public Animator green_fish_animation;
+    public GameObject network_manager_UI;
+
+    
 
 
 
-
+    //[Rpc(SendTo.Server)]
     void ChangeTeam()
     {
         if (current_team == Team.White)
@@ -274,6 +278,17 @@ public class grid_manager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        host.onClick.AddListener(() =>
+        {
+            NetworkManager.Singleton.StartHost();
+            network_manager_UI.SetActive(false);
+        });
+        client.onClick.AddListener(() =>
+        {
+            NetworkManager.Singleton.StartClient();
+            network_manager_UI.SetActive(false);
+
+        });
         for (int i = 0; i < 64; i ++)
         {
             moving_script obj = Instantiate(cell, transform, false);
@@ -412,6 +427,7 @@ public class grid_manager : MonoBehaviour
     }
 
     public List<GameObject> SpawnedBubbles = new List<GameObject>{};
+    //[Rpc(SendTo.ClientsAndHost)]
     void SpawnBubbles(Team team, int x, int y)
     {
         if ( team == Team.Green )
@@ -698,8 +714,26 @@ public class grid_manager : MonoBehaviour
 
         return true;
     }
-    
+
     public void OnClick(int x, int y)
+    {
+        if (IsHost)
+        {
+            if (current_team == Team.White)
+            {
+                OnClickRpc(x, y);
+            }
+        }
+        else
+        {
+            if (current_team == Team.Green)
+            {
+                OnClickRpc(x, y);
+            }
+        }
+    }
+    [Rpc(SendTo.Everyone)]
+    public void OnClickRpc(int x, int y)
     {
         AnimalData current_animal = GetAnimalTurn(current_team);
         Debug.Log(x.ToString() + " " + y.ToString());
@@ -755,6 +789,7 @@ public class grid_manager : MonoBehaviour
         AnimationsChill();
         Animations();
     }
+    
     void Animations()
     {
         AnimalData current_animal = GetAnimalTurn(current_team);
@@ -780,8 +815,9 @@ public class grid_manager : MonoBehaviour
             break;
         }
     }
+    [Rpc(SendTo.Everyone)]
 
-    public void EscapeWhite()
+    public void EscapeWhiteRpc()
     {
         if (current_team == Team.White)
         {
@@ -828,8 +864,8 @@ public class grid_manager : MonoBehaviour
             }
         }
     }
-
-    public void EscapeGreen()
+    [Rpc(SendTo.Everyone)]
+    public void EscapeGreenRpc()
     {
         if(current_team == Team.Green)
         {
@@ -885,4 +921,7 @@ public class grid_manager : MonoBehaviour
             SpawnedBubbles[i].GetComponent<Rigidbody2D>().AddForce(transform.up*45);
         }
     }
+    public Button host;
+    public Button client;
+    
 }
