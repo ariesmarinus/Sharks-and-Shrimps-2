@@ -1,19 +1,21 @@
 using System;
-using System.Collections;
+//using System.Collections;
 using System.Collections.Generic;
-using System.Xml;
-using NUnit.Framework;
+//using System.Xml;
+//using NUnit.Framework;
 using Unity.Mathematics;
-using Unity.VisualScripting;
-using UnityEditor;
+//using Unity.VisualScripting;
+//using UnityEditor;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.SceneManagement;
+//using UnityEngine.AI;
+//using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Unity.Netcode;
+using TMPro;
 
 public class grid_manager : NetworkBehaviour
 {
+    public TMP_InputField the_code;
     public moving_script cell;
     public enum Animal
     {
@@ -275,6 +277,7 @@ public class grid_manager : NetworkBehaviour
 
         return null;
     }
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
